@@ -1,0 +1,26 @@
+.container{
+    border: 1px solid lightgray;
+    padding: 15px;
+}
+
+#custom{
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    padding:20px;
+    margin-bottom: 15px;
+}
+
+#heading{
+    margin-left: 130px;
+}
+
+header{
+    margin-bottom: 1em;
+}
+
+
+
+
+
+
+
