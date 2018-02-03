@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Information</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+<header class="clearfix" style="height: 5vh; padding: 5px; padding-left: 10px; background-color:#f2f2f2;  background-size: cover;">
+    <div class="container-fluid">
+        <p class="h5">My Dating Website</p>
+    </div>
+</header> <!--header-->
+
+<div class="container-fluid rounded box">
+    <form action="" method="post">
+        <div class="row">
+            <div class="col-12">
+                <p class="h2">Personal Information</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-7">
+                <div class="form-group row">
+                    <div class="col-12">
+                        <check if="{{isset(@errors['firstname'])}}">
+                            <p class="text-warning">{{ @errors['firstname'] }}</p>
+                        </check>
+                        <label class="h6">First Name</label>
+                        <input type="text" class="form-control" value="{{@firstname}}" name="firstname">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <check if="{{isset(@errors['lastname'])}}">
+                            <p class="text-warning">{{ @errors['lastname'] }}</p>
+                        </check>
+                        <label class="h6">Last Name</label>
+                        <input type="text" class="form-control" value="{{@lastname}}" name="lastname">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <check if="{{isset(@errors['age'])}}">
+                            <p class="text-warning">{{ @errors['age'] }}</p>
+                        </check>
+                        <label class="h6">Age</label>
+                        <input type="text" class="form-control" value="{{@age}}" name="age">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <check if="{{isset(@errors['gender'])}}">
+                            <p class="text-warning">{{ @errors['gender'] }}</p>
+                        </check>
+                        <label class="h6">Gender</label> <br>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="gender" value="Male"
+                                <check if="{{@gender == 'Male'}}">checked="checked"</check>> Male
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="gender" value="Female"
+                                <check if="{{@gender == 'Female'}}">checked="checked"</check>> Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <check if="{{isset(@errors['phone'])}}">
+                            <p class="text-warning">{{ @errors['phone'] }}</p>
+                        </check>
+                        <label class="h6">Phone Number</label>
+                        <input type="text" class="form-control" value="{{@phone}}" name="phone">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-5">
+                <div style="background-color: lightgray; margin-top: 30px;" class="alert" role="alert">
+                    <strong>Note:</strong> All information entered is protected by our
+                    <a href="#">privacy policy</a>. Profile information can only be viewed
+                    by others with your permission
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" name="submit" class="btn btn-primary float-right">Next ></button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
