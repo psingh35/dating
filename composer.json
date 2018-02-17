@@ -1,5 +1,5 @@
 {
-  "name":"psinghgr/dating",
+  "name":"psingh/dating",
   "authors":[
     {
       "name": "Parminder Singh",
@@ -8,5 +8,8 @@
   ],
   "require": {
     "bcosca/fatfree-core": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["classes/"]
   }
 }

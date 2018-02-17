@@ -1,10 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>My Dating Website</title>
     <meta charset="UTF-8">
-    <title>Summary</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://psingh.greenriverdev.com/328/dating/styles/styles.css" type="text/css" />
 </head>
 <body>
+<header class="clearfix" style="height: 30px; color: gray; background-color: lightgray;"><span id="heading">My Dating Website</span></header>
+
+<div class="container rounded">
+    <form action="" method="post">
+        <div class="row">
+            <div class="col-md-6">
+               <table class="table table-bordered">
+                   <tr>
+                       <td class="text-muted font-weight-normal">Name: {{@first}} {{@last}}</td>
+                   </tr>
+                   <tr>
+                       <td class="text-muted font-weight-normal">Gender: {{@gender}}</td>
+                   </tr>
+                   <tr>
+                       <td class="text-muted font-weight-normal">Age: {{@age}}</td>
+                   </tr>
+                   <tr>
+                       <td class="text-muted font-weight-normal">Phone: {{@phone}}</td>
+                   </tr>
+                   <tr>
+                       <td class="text-muted font-weight-normal">Email: {{@email}}</td>
+                   </tr>
+                   <tr>
+                       <td class="text-muted font-weight-normal">Seeking: {{@seeking}}</td>
+                   </tr>
+                   <tr>
+                       <td class="text-muted font-weight-normal">Interests:
+                           <repeat group="{{@indoor}}" value="@indoors">
+                               {{@indoors}}
+                           </repeat>
+                           <repeat group="{{@outdoor}}" value="@outdoors">
+                               {{@outdoors}}
+                           </repeat>
+                       </td>
+                   </tr>
+               </table>
+            </div>
+            <div class="col-md-3 offset-2">
+                <img class="img-fluid" alt="photo" src="images/user.png">
+                <hr>
+                <p class="h6 text-muted offset-1">Birography: ssols</p>
+                <p class="offset-1 text-muted">{{@biography}}</p>
+            </div>
+            <div class="offset-6">
+                <button type="submit" name="submit" class="btn btn-primary">Contact Me!</button>
+            </div>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>

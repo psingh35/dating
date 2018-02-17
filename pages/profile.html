@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Dating Website</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://psingh.greenriverdev.com/328/dating/styles/styles.css" type="text/css" />
+</head>
+<body>
+<header class="clearfix" style="height: 30px; color: gray; background-color: lightgray;"><span id="heading">My Dating Website</span></header>
+
+<div class="container rounded">
+    <div class="col-md-12">
+        <p class="h1">Profile</p>
+        <hr>
+    </div>
+    <form action="#" method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <label class="font-weight-bold col-md-6">Email</label>
+
+                <div class="col-12 input-group">
+                    <input class="form-control" placeholder="email" name="email" value="{{@email}}">
+                </div>
+
+                <div class="col-12">
+                    <check if="{{ isset(@errors['email']) }}">
+                        <span>{{ @errors['email'] }}</span>
+                    </check>
+                </div>
+                <br>
+
+                <div class="col-12">
+                    <label class="font-weight-bold">State</label>
+                    <select class="form-control" name="state">
+                        <option value="">--Select--</option>
+
+                        <repeat group="{{ @states }}" value="{{ @option }}">
+                            <option
+                            <check if="{{ @option == @state }}">
+                                selected</check>>
+                            {{ @option }}
+                            </option>
+                        </repeat>
+                    </select>
+                    <div class="col-12">
+                        <check if="{{ isset(@errors['state']) }}">
+                            <span>{{ @errors['state'] }}</span>
+                        </check>
+                    </div>
+                </div>
+                <br>
+
+
+                <div class="col-12 radio">
+                    <label class="font-weight-bold">Seeking</label><br>
+                    <label class="radio-inline">
+                        <input type="radio" name="seeking" value="Male"> Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="seeking" value="Female"> Female
+                    </label>
+                    <div class="col-12">
+                        <check if="{{ isset(@errors['seeking']) }}">
+                            <span>{{ @errors['seeking'] }}</span>
+                        </check>
+                    </div>
+                </div>
+                <br>
+            </div>
+
+            <div class="col-md-6">
+                <label class="font-weight-bold">Biography</label>
+                    <textarea class="form-control text-left" id="" rows="4" name="biography">
+                        {{@biography}}
+                    </textarea>
+                <div class="col-12">
+                    <check if="{{ isset(@errors['biography']) }}">
+                        <span>{{ @errors['biography'] }}</span>
+                    </check>
+                </div>
+                <br>
+            </div>
+            <div class="col-12">
+                <button type="submit" name="submit" class="btn btn-primary float-right">Next ></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

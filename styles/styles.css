@@ -1,26 +1,38 @@
-.container{
-    border: 1px solid lightgray;
-    padding: 15px;
+.navbar {
+    border-bottom: solid 1px;
+    border-color: lightgrey;
+    height: 2.3em;
+    background-color: #f2f2f2;
 }
 
-#custom{
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    padding:20px;
-    margin-bottom: 15px;
+.container-fluid {
+    margin: 1.8em;
+    margin-left: 4em;
+    margin-right: 4em;
+    padding: 30px;
+    border: solid 1px;
+    border-color: lightgrey;
 }
 
-#heading{
-    margin-left: 130px;
+#left {
+    margin-top: 2em;
+}
+#para {
+    padding-left: 45px;
+    padding-top: 20px;
+    border-bottom: 1px solid lightgrey;
+    border-top: 1px solid lightgrey;
 }
 
-header{
-    margin-bottom: 1em;
+button {
+    margin-top: 1em;
+    margin-bottom: 0em;
 }
 
+h1 {
+    margin-top: 1em;
+}
 
-
-
-
-
-
+#box {
+    border: solid 1px;
+}

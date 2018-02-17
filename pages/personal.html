@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Dating Website</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://psingh.greenriverdev.com/328/dating/styles/styles.css" type="text/css" />
+</head>
+<body>
+<header class="clearfix" style="height: 30px; color: gray; background-color: lightgray;"><span id="heading">My Dating Website</span></header>
+
+<div class="container rounded">
+    <div class="col-md-12">
+        <p class="h1">Personal Information</p>
+        <hr>
+    </div>
+
+    <form action="#" method="post">
+        <div class="row">
+            <div class="col-md-9">
+                <label class="font-weight-bold col-md-9">First Name</label>
+                <div class="col-12 input-group">
+                    <input name="first" placeholder="First Name" value="{{@first}}" class="form-control">
+                </div>
+                <div class="col-12">
+                    <check if="{{ isset(@errors['first']) }}">
+                        <span>{{ @errors['first'] }}</span>
+                    </check>
+                </div>
+
+                <div class="col-12">
+                    <label class="font-weight-bold">Last Name</label>
+                    <input name="last" placeholder="Last Name" value="{{@last}}" class="form-control">
+                </div>
+
+                <div class="col-12">
+                    <check if="{{ isset(@errors['last']) }}">
+                        <span>{{ @errors['last'] }}</span>
+                    </check>
+                </div>
+
+                <div class="col-12">
+                    <label class="font-weight-bold">Age</label>
+                    <input name="age" placeholder="age" value="{{@age}}" class="form-control">
+                </div>
+                <div class="col-12">
+                    <check if="{{ isset(@errors['age']) }}">
+                        <span>{{ @errors['age'] }}</span>
+                    </check>
+                </div>
+
+
+                <div class="col-12 radio">
+                    <label class="font-weight-bold">Gender</label><br>
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="Male"> Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="Female"> Female
+                    </label>
+                </div>
+
+                <div class="col-12">
+                    <check if="{{ isset(@errors['gender']) }}">
+                        <span>{{ @errors['gender'] }}</span>
+                    </check>
+                </div>
+
+                <div class="col-12">
+                    <label class="font-weight-bold">Phone :</label>
+                    <input class="form-control" placeholder="Phone Number" name="phone" value="{{@phone}}">
+                </div>
+
+                <div class="col-12">
+                    <check if="{{ isset(@errors['phone']) }}">
+                        <span>{{ @errors['phone'] }}</span>
+                    </check>
+                </div>
+                <br>
+
+                <div class="col-12">
+                    <label class="font-weight-bold">Premium Membership</label>
+                    <br>
+                    <input type="checkbox" name="member" value="on"> Sign me up for a premium account!
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3">
+                <div style="border: 1px solid black; background-color: lightgrey" class="col-11 text-center rounded" id="box">
+                    <strong>NOTE :</strong> <span>All information entered is protected by our <a href="">privacy policy</a>.
+                    Profile information can only be viwed by others with your permission.</span>
+                </div>
+                <br>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" name="submit" class="btn btn-primary float-right">Next ></button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
