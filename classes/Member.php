@@ -1,9 +1,11 @@
 <?php
 //Parminder Singh
+//Member.php
 
 
 /**
  *Member class to make members
+ *
  * @author Parminder Singh
  * @copyright 2018
  */
