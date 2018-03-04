@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Dating Website</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://psingh.greenriverdev.com/328/dating/styles/styles.css" type="text/css" />
+</head>
+<body>
+<header class="clearfix" style="height: 30px; color: gray; background-color: lightgray;"><span id="heading">My Dating Website</span></header>
+
+<div class="container rounded">
+    <div class="col-md-12">
+        <p class="h1">Members List</p>
+        <hr>
+    </div>
+    <table class = "table">
+        <thead>
+        <tr>
+            <th>Member ID</th>
+            <th>First</th>
+            <th>Last</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>State</th>
+            <th>Seeking</th>
+            <th>Biography</th>
+            <th>Premium Member</th>
+            <th>Image</th>
+            <th>Interests</th></tr>
+        </thead>
+        <tbody>
+        <repeat group="{{ @members }}" value="{{ @member }}">
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    {{ @member['fname'] }}
+
+                </td>
+                <td>
+                    {{ @member['lname'] }}
+
+                </td>
+                <td>
+                    {{ @member['age'] }}
+
+                </td>
+                <td>
+                    {{ @member['gender'] }}
+
+                </td>
+                <td>
+                    {{ @member['phone'] }}
+
+                </td>
+                <td>
+                    {{ @member['email'] }}
+
+                </td>
+                <td>
+                    {{ @member['state'] }}
+
+                </td>
+                <td>
+                    {{ @member['seeking'] }}
+
+                </td>
+                <td>
+                    {{ @member['bio'] }}
+
+                </td>
+                <td>
+                    <check if="{{@member['premium']}} == 0">
+                        <input type="checkbox" name="" value="" checked>
+                    </check>
+                    <check if="{{@member['premium']}} == 1">
+                        <input type="checkbox" name="" value="">
+                    </check>
+                </td>
+                <td>
+                    {{ @member['image'] }}
+
+                </td>
+                <td>
+                    {{ @member['interests'] }}
+                </td>
+            </tr>
+        </repeat>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
