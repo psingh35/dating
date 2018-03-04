@@ -1,4 +1,7 @@
 <?php
+//parminder singh
+//2/1/2018
+//index.php
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 
@@ -17,6 +20,7 @@ $f3 = Base :: instance();
 //Debug level
 $f3->set('DEBUG', 3);
 
+//make an object of database class and call the connect function
 $database = new Database();
 $dbh = $database->connect();
 
@@ -198,14 +202,16 @@ $f3->route('GET|POST /summary', function($f3)
         }
 
         $database = new Database();
-        $database->insertMember($memberID, $first, $last, $age, $gender, $phone, $email, $state, $seeking, $bio, 0, $image, $outIn);
+        //insert to memebers
+        $database->insertMember(null, $first, $last, $age, $gender, $phone, $email, $state, $seeking, $bio, 0, $image, $outIn);
         $f3->set('outdoor', $member->getOutdoor());
         $f3->set('indoor', $member->getIndoor());
     }
     else
     {
         $database = new Database();
-        $database->insertMember($memberID, $first, $last, $age, $gender, $phone, $email, $state, $seeking, $bio, 1, $image, "");
+        //indert to members
+        $database->insertMember(null, $first, $last, $age, $gender, $phone, $email, $state, $seeking, $bio, 1, $image, "");
         $f3->set('outdoor', '');
         $f3->set('indoor', '');
     }
