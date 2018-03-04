@@ -2,8 +2,10 @@
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 
-
+require_once('config.php');
 require_once('vendor/autoload.php');
+require_once ('model/database.php');
+
 
 //include "classes/Member.php";
 //include "classes/Premium.php";
@@ -14,6 +16,10 @@ $f3 = Base :: instance();
 
 //Debug level
 $f3->set('DEBUG', 3);
+
+$database = new Database();
+$dbh = $database->connect();
+
 
 $f3->route('GET /', function($f3)
 {
@@ -104,6 +110,7 @@ $f3->route('GET|POST /profile', function($f3)
             $member->setBiography($biography);
             $member->setEmail($email);
             $member->setSeeking($seeking);
+            $member->setState($state);
 
             //if the user selected wheter the preimuim was selected or not
             if ($_SESSION['memberP'] == 'on')
@@ -169,13 +176,36 @@ $f3->route('GET|POST /summary', function($f3)
      $member = $_SESSION['member'];
     // print_r($member);
      //echo $member->getSeeking();
+
+    $first = $member->getFirst();
+    $last = $member->getLast();
+    $age = $member->getAge();
+    $gender = $member->getGender();
+    $state = $member->getState();
+    $phone = $member->getPhone();
+    $email = $member->getEmail();
+    $seeking = $member->getSeeking();
+    $bio = $member->getBiography();
+    $interest = "";
+
     if ($_SESSION['memberP'] == 'on')
     {
+        $outIn = array_merge($member->getOutdoor(),$member->getIndoor);
+
+        foreach ($outIn as $in)
+        {
+            $interest.=$in.", ";
+        }
+
+        $database = new Database();
+        $database->insertMember($memberID, $first, $last, $age, $gender, $phone, $email, $state, $seeking, $bio, 0, $image, $outIn);
         $f3->set('outdoor', $member->getOutdoor());
         $f3->set('indoor', $member->getIndoor());
     }
     else
     {
+        $database = new Database();
+        $database->insertMember($memberID, $first, $last, $age, $gender, $phone, $email, $state, $seeking, $bio, 1, $image, "");
         $f3->set('outdoor', '');
         $f3->set('indoor', '');
     }
@@ -192,6 +222,18 @@ $f3->route('GET|POST /summary', function($f3)
 
     $template = new Template();
     echo $template->render('pages/summary.html');
+
+});
+
+$f3->route('GET /admin', function($f3, $params) {
+
+    $database = new Database();
+
+    $members = $database->getMembers();
+    $f3->set('members', $members);
+
+    $template = new Template();
+    echo $template->render('pages/adminlogin.html');
 
 });
 
