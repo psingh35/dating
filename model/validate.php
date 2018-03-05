@@ -1,4 +1,5 @@
 <?php
+//parminder singh
 function validName($first)
 {
     return !empty($first) && ctype_alpha($first);

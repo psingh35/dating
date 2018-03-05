@@ -5,7 +5,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 
-require_once('config.php');
+require_once('/home/psinghgr/config.php');
 require_once('vendor/autoload.php');
 require_once ('model/database.php');
 
@@ -144,12 +144,15 @@ $f3->set('outdoor', array('hiking', 'biking', 'swimming', 'collecting', 'walking
 
 $f3->route('GET|POST /interests', function($f3)
 {
+    //if submit
     if (isset($_POST['submit']))
     {
 
+        //get outdoor and indoor
         $outdoor = $_POST['outdoors'];
         $indoor = $_POST['indoors'];
 
+        //validate
         require('model/valididateInterest.php');
 
         $member = $_SESSION['member'];
@@ -167,9 +170,8 @@ $f3->route('GET|POST /interests', function($f3)
             $_SESSION['indoor'] = $_POST['indoors'];
             $f3->reroute('/summary');
         }
-
     }
-
+    //render
     $template = new Template();
     echo $template->render('pages/interests.html');
 
@@ -191,11 +193,15 @@ $f3->route('GET|POST /summary', function($f3)
     $seeking = $member->getSeeking();
     $bio = $member->getBiography();
     $interest = "";
+    //print_r($_SESSION['memberP']);
+
 
     if ($_SESSION['memberP'] == 'on')
     {
-        $outIn = array_merge($member->getOutdoor(),$member->getIndoor);
+        //merge array
+        $outIn = array_merge($member->getOutdoor(),$member->getIndoor());
 
+        //join and add to a variable
         foreach ($outIn as $in)
         {
             $interest.=$in.", ";
@@ -203,7 +209,7 @@ $f3->route('GET|POST /summary', function($f3)
 
         $database = new Database();
         //insert to memebers
-        $database->insertMember(null, $first, $last, $age, $gender, $phone, $email, $state, $seeking, $bio, 0, $image, $outIn);
+        $database->insertMember(null, $first, $last, $age, $gender, $phone, $email, $state, $seeking, $bio, 0, "", $interest);
         $f3->set('outdoor', $member->getOutdoor());
         $f3->set('indoor', $member->getIndoor());
     }
@@ -211,7 +217,7 @@ $f3->route('GET|POST /summary', function($f3)
     {
         $database = new Database();
         //indert to members
-        $database->insertMember(null, $first, $last, $age, $gender, $phone, $email, $state, $seeking, $bio, 1, $image, "");
+        $database->insertMember(null, $first, $last, $age, $gender, $phone, $email, $state, $seeking, $bio, 1, "", $interest);
         $f3->set('outdoor', '');
         $f3->set('indoor', '');
     }
@@ -233,14 +239,31 @@ $f3->route('GET|POST /summary', function($f3)
 
 $f3->route('GET /admin', function($f3, $params) {
 
+    //create obj
     $database = new Database();
 
+    //from the database
     $members = $database->getMembers();
+    //set to fatfree variable
     $f3->set('members', $members);
+
 
     $template = new Template();
     echo $template->render('pages/adminlogin.html');
+});
 
+$f3->route('GET /admin/@lname', function($f3, $params) {
+
+    $database = new database();
+
+    $lname = $params['lname'];
+
+    $member = $database->indiviual($lname);
+
+    $f3->set('member', $member);
+
+    $template = new Template();
+    echo $template->render('pages/indiviual.html');
 });
 
 //Run fat free

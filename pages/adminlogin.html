@@ -12,12 +12,13 @@
     <link rel="stylesheet" href="http://psingh.greenriverdev.com/328/dating/styles/styles.css" type="text/css" />
 </head>
 <body>
-<header class="clearfix" style="height: 30px; color: gray; background-color: lightgray;"><span id="heading">My Dating Website</span></header>
-
+<header class="clearfix" style="height: 30px; color: gray; background-color: lightgray;"><span id="heading">My Dating Website
+</span> <span style="float: right; margin-right: 25px;"><a href="admin">Admin Login</a></span> </header>
 <div class="container rounded">
     <div class="col-md-12">
         <p class="h1">Members List</p>
         <hr>
+        <small> * Click on the first name to view indiviual info</small>
     </div>
     <table class = "table">
         <thead>
@@ -40,11 +41,10 @@
         <repeat group="{{ @members }}" value="{{ @member }}">
             <tr>
                 <td>
-
+                    {{ @member['member_id'] }}
                 </td>
                 <td>
-                    {{ @member['fname'] }}
-
+                    <a href="{{ @BASE }}/admin/{{ @member['lname']}}">{{ @member['fname'] }}</a>
                 </td>
                 <td>
                     {{ @member['lname'] }}

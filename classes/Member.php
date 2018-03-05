@@ -1,10 +1,12 @@
 <?php
 //Parminder Singh
 //Member.php
+//3/1/18
 
 
 /**
- *Member class to make members
+ *Member class to make members, this is option for non premmium members.
+ * It takes basic data from the data.
  *
  * @author Parminder Singh
  * @copyright 2018
@@ -12,15 +14,26 @@
 
 class Member
 {
+    //fields
     protected $first;
     protected $last;
     protected $age;
     protected $gender;
+    protected $state;
     protected $phone;
     protected $email;
     protected $seeking;
     protected $biography;
 
+
+    /**
+     * Member constructor, get and set the following variables from the form
+     * @param $first
+     * @param $last
+     * @param $age
+     * @param $gender
+     * @param $phone
+     */
     function __construct($first, $last, $age, $gender, $phone)
     {
         $this->first = $first;
@@ -31,6 +44,7 @@ class Member
     }
 
     /**
+     * Gets the first name
      * @return mixed
      */
     public function getFirst()
@@ -39,7 +53,8 @@ class Member
     }
 
     /**
-     * @param mixed $first
+     * To set the first name
+     * @param  $first
      */
     public function setFirst($first)
     {
@@ -47,7 +62,8 @@ class Member
     }
 
     /**
-     * @return mixed
+     * To Get the last name
+     * @return last name
      */
     public function getLast()
     {
@@ -55,7 +71,8 @@ class Member
     }
 
     /**
-     * @param mixed $last
+     * To Set the last name
+     * @param  $last
      */
     public function setLast($last)
     {
@@ -63,7 +80,8 @@ class Member
     }
 
     /**
-     * @return mixed
+     * To Get the age
+     * @return age
      */
     public function getAge()
     {
@@ -71,15 +89,20 @@ class Member
     }
 
     /**
+     * To set the age, sets only if age is non negative and numeric.
      * @param mixed $age
      */
     public function setAge($age)
     {
-        $this->age = $age;
+        if (is_numeric($age) && $age > 0)
+            $this->age = $age;
+        else
+            $this->age ="";
     }
 
     /**
-     * @return mixed
+     * It gets the gender
+     * @return gender
      */
     public function getGender()
     {
@@ -87,7 +110,8 @@ class Member
     }
 
     /**
-     * @param mixed $gender
+     * It sets the gender
+     * @param  $gender
      */
     public function setGender($gender)
     {
@@ -95,7 +119,8 @@ class Member
     }
 
     /**
-     * @return mixed
+     * It gets the phone number
+     * @return phone number
      */
     public function getPhone()
     {
@@ -103,14 +128,19 @@ class Member
     }
 
     /**
-     * @param mixed $phone
+     * To set the phone number only if it is numeric empty string otherwise.
+     * @param  $phone
      */
     public function setPhone($phone)
     {
-        $this->phone = $phone;
+        if (is_numeric($phone))
+            $this->phone = $phone;
+        else
+            $this->phone = "";
     }
 
     /**
+     * To get the email
      * @return mixed
      */
     public function getEmail()
@@ -119,15 +149,20 @@ class Member
     }
 
     /**
-     * @param mixed $email
+     * To set the email only if it is a valid email address using the filter_var function
+     * @param  $email
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+            $this->email = "";
+        else
+            $this->email = $email;
     }
 
     /**
-     * @return mixed
+     * To get the seeking
+     * @return seeking
      */
     public function getSeeking()
     {
@@ -135,7 +170,8 @@ class Member
     }
 
     /**
-     * @param mixed $seeking
+     * To set the seeking
+     * @param  $seeking
      */
     public function setSeeking($seeking)
     {
@@ -143,7 +179,8 @@ class Member
     }
 
     /**
-     * @return mixed
+     * Gets the bio
+     * @return bio
      */
     public function getBiography()
     {
@@ -151,6 +188,7 @@ class Member
     }
 
     /**
+     * Sets the bio
      * @param mixed $biography
      */
     public function setBiography($biography)
@@ -158,5 +196,22 @@ class Member
         $this->biography = $biography;
     }
 
+    /**
+     * Gets the state
+     * @return state
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * Sets the state
+     * @param mixed $state
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
 
 }

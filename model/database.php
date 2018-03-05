@@ -114,4 +114,29 @@ class Database
         //return $success
         return $success;
     }
+
+    //to get indiviual info
+    function indiviual($lname)
+    {
+
+        global $dbh;
+
+        //select from database
+        $sql = "SELECT * FROM Members WHERE lname = :lname";
+
+        $statement = $dbh->prepare($sql);
+
+        //bind paramas
+        $statement->bindParam(':lname', $lname, PDO::PARAM_INT);
+
+        //execute
+        $statement->execute();
+
+        //fetch the results
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        //return $result
+        return $result;
+    }
+
 }
